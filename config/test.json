@@ -1,0 +1,9 @@
+{
+  "mode": "test",
+  "database": {
+    "client": "pg",
+    "connection": {
+      "database": "test"
+    }
+  }
+}

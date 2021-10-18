@@ -1,0 +1,14 @@
+{
+  "mode": "NODE_ENV",
+  "app": {
+    "port": "APP_PORT"
+  },
+  "database": {
+    "connection": {
+      "host": "DATABASE_CONNECTION_HOST",
+      "user": "DATABASE_CONNECTION_USER",
+      "password": "DATABASE_CONNECTION_PASSWORD",
+      "database": "DATABASE_CONNECTION_DATABASE_NAME"
+    }
+  }
+}

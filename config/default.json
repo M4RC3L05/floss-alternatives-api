@@ -1,0 +1,24 @@
+{
+  "mode": "development",
+  "app": {
+    "port": 4321,
+    "pagination": {
+      "perPage": 20,
+      "maxPerPage": 100
+    }
+  },
+  "database": {
+    "client": "pg",
+    "connection": {
+      "host": "127.0.0.1",
+      "port": 5432,
+      "user": "postgres",
+      "password": "",
+      "database": "app"
+    },
+    "migrations": {
+      "directory": "./database/migrations",
+      "loadExtensions": [".js"]
+    }
+  }
+}
