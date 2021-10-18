@@ -1,0 +1,9 @@
+{
+  "xo.enable": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	}
+}
