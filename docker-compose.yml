@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  database:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_DB=app
+    ports:
+      - "5432:5432"
