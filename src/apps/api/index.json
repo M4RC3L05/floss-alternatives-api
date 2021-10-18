@@ -1,0 +1,11 @@
+{
+  "env":{},
+  "exec_mode": "cluster",
+  "instances": 2,
+  "kill_timeout": 120000,
+  "merge_logs": true,
+  "name": "api",
+  "script": "./dist/apps/api/index.mjs",
+  "wait_ready": true,
+  "node_args": "--es-module-specifier-resolution=node"
+}
