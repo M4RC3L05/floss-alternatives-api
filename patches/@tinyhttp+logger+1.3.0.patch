@@ -1,0 +1,11 @@
+diff --git a/node_modules/@tinyhttp/logger/dist/index.js b/node_modules/@tinyhttp/logger/dist/index.js
+index 01c2ad8..da558dd 100644
+--- a/node_modules/@tinyhttp/logger/dist/index.js
++++ b/node_modules/@tinyhttp/logger/dist/index.js
+@@ -1,5 +1,5 @@
+ import { magenta, bold, red, cyan } from 'colorette';
+-import * as statusEmoji from 'http-status-emojis';
++import statusEmoji from 'http-status-emojis';
+ import dayjs from 'dayjs';
+ import { METHODS } from 'http';
+ 
