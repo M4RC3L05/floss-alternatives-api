@@ -1,0 +1,107 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "imports": {
+    "#src/*": "./dist/*",
+    "#tests/*": "./dist/tests/*"
+  },
+  "main": "index.js",
+  "scripts": {
+    "compile": "rm -rf dist && swc --copy-files src -d dist && mv dist/apps/api/index.js dist/apps/api/index.mjs",
+    "compile-watch": "rm -rf dist && swc --copy-files --watch src -d dist",
+    "dedup-dependencies": "npm dedup && npm i && git add",
+    "dev-api": "concurrently \"sleep 1 && NODE_ENV=development nodemon --watch dist --exec 'node --es-module-specifier-resolution=node dist/apps/api/index.js | pino-pretty'\" \"npm run compile-watch\"",
+    "postinstall": "patch-package",
+    "lint": "xo",
+    "lint-fix": "xo --fix",
+    "lint-staged": "lint-staged",
+    "migrate": "node --es-module-specifier-resolution=node node_modules/.bin/knex migrate:latest",
+    "prepare": "husky install",
+    "rollback": "node --es-module-specifier-resolution=node node_modules/.bin/knex migrate:rollback --all",
+    "start-api": "node --es-module-specifier-resolution=node dist/apps/api/index.mjs",
+    "test": "NODE_ENV=test node --es-module-specifier-resolution=node node_modules/uvu/bin.js dist/tests",
+    "test-coverage": "c8 npm test",
+    "type-check": "tsc --noEmit"
+  },
+  "lint-staged": {
+    "database/**/*.@(js)": [
+      "xo"
+    ],
+    "*.@(ts)": [
+      "xo"
+    ],
+    "package.json": [
+      "sort-package-json"
+    ],
+    "package-lock.json": [
+      "npm run dedup-dependencies"
+    ]
+  },
+  "xo": {
+    "overrides": [
+      {
+        "files": "database/**/*.js",
+        "rules": {
+          "unicorn/filename-case": "off"
+        }
+      }
+    ],
+    "prettier": true,
+    "rules": {
+      "import/extensions": "off",
+      "@typescript-eslint/naming-convention": "off"
+    },
+    "space": true
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false
+  },
+  "dependencies": {
+    "@tinyhttp/app": "^2.0.10",
+    "@tinyhttp/cors": "^2.0.0",
+    "@tinyhttp/logger": "^1.3.0",
+    "config": "^3.3.6",
+    "fastest-validator": "^1.11.1",
+    "helmet": "^4.6.0",
+    "http-terminator": "^3.0.3",
+    "knex": "^0.95.11",
+    "lint-staged": "^11.2.3",
+    "milliparsec": "^2.2.0",
+    "objection": "^3.0.0-alpha.5",
+    "patch-package": "^6.4.7",
+    "pg": "^8.7.1",
+    "pino": "^7.0.2",
+    "qs": "^6.10.1"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.51",
+    "@swc/core": "^1.2.95",
+    "@types/config": "^0.0.39",
+    "@types/node": "^16.10.5",
+    "@types/qs": "^6.9.7",
+    "@types/supertest": "^2.0.11",
+    "c8": "^7.10.0",
+    "chokidar": "^3.5.2",
+    "concurrently": "^6.3.0",
+    "husky": "^7.0.0",
+    "nodemon": "^2.0.13",
+    "pino-pretty": "^7.0.1",
+    "sort-package-json": "^1.52.0",
+    "supertest-fetch": "^1.4.3",
+    "typescript": "^4.4.4",
+    "uvu": "^0.5.2",
+    "xo": "^0.45.0"
+  }
+}
