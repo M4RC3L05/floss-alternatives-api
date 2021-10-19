@@ -13,6 +13,7 @@ export const app = () => {
 
   if (config.get<string>("mode") === "development") {
     app.use(async (...args) => {
+      // eslint-disable-next-line node/no-unsupported-features/es-syntax
       const { logger } = await import("@tinyhttp/logger");
 
       logger({ emoji: true })(...args);
