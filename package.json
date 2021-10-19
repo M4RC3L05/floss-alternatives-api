@@ -12,6 +12,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "build": "npm run compile",
     "compile": "rm -rf dist && swc --copy-files src -d dist && mv dist/apps/api/index.js dist/apps/api/index.mjs",
     "compile-watch": "rm -rf dist && swc --copy-files --watch src -d dist",
     "dedup-dependencies": "npm dedup && npm i && git add",

@@ -1,7 +1,7 @@
 {
   "mode": "NODE_ENV",
   "app": {
-    "port": "APP_PORT"
+    "port": "PORT"
   },
   "database": {
     "connection": {
