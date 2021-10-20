@@ -16,10 +16,6 @@ export const errorHandlerMiddleware =
   (error: any, _request: Request, response: Response) => {
     log.error(error, "Caught error.");
 
-    if (!(error instanceof Error)) {
-      error = new Error(error);
-    }
-
     for (const mapper of mappers) {
       error = mapper(error);
 
