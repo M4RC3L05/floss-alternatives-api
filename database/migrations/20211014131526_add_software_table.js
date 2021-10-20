@@ -3,7 +3,7 @@
  */
 export async function up(knex) {
   await knex.schema.withSchema("core").createTable("softwares", (table) => {
-    table.uuid("id").primary().defaultTo(knex.raw(`"core".uuid_generate_v4()`));
+    table.uuid("id").primary().defaultTo(knex.raw("uuid_generate_v4()"));
     table.text("name").notNullable();
     table.text("description").nullable();
     table.text("lead").nullable();
